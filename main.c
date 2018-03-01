@@ -7,7 +7,7 @@ void labwork( void ){
 	display_reset();
 	timer_wait(50);
 	environment_set();
-	helikopter_placement();
+	helicopter_placement();
 	display_update();
 
 }
@@ -66,7 +66,7 @@ int main(void) {
 	for(i = 0; i < 24; i++){
 		
 		display_reset();
-		helikopter_draw(i, i, helikopter_bitmap);
+		helikopter_draw(i, i, helicopter_bitmap);
 		display_update();
 		quicksleep(1000000);
 	}
@@ -77,9 +77,12 @@ int main(void) {
 	for(i = 0; i < 24; i++){
 
 		display_reset();
-		environment_set();
-		helikopter_draw(i, 12, helikopter_bitmap);
+		environment_set();		
+		helicopter_draw(i, 12, helicopter_bitmap);
 		display_update();
+
+		score_inc(&score);
+		
 		timer_wait(100);
 	}
 

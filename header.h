@@ -7,11 +7,10 @@
  ******************************/
 
 // Helicopter
-//char helikopter_bitmap[8][8];
 void limit_y(void);
 //int helicopter_update(void);
-void helikopter_placement();
-void helikopter_draw(char x, char y, char helikopter_bitmap[8][8]);
+void helicopter_placement(void);
+void helicopter_draw(char x, char y, char helicopter_bitmap[8][8]);
 //void helicopter_init();
 
 // Input 
@@ -33,9 +32,14 @@ void display_init(void);
 // Data
 char display_matrix[128][32];
 char helicopter_bitmap[8][8];
+int score;
 
 // Timer
 void timer_wait(int duration);
 
 // Obstacle
 void environment_set(void);
+
+// Scoring
+void score_inc(void);
+int score_get(void);

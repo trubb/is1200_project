@@ -15,10 +15,10 @@
 #define DISPLAY_TURN_OFF_VBAT (PORTFSET = 0x20)
 
 /* quicksleep:
- * used to create a small delay
- * does not constitute good use of resources
- * but comes in handy in some cases
- */
+   A simple function to create a small delay.
+   Very inefficient use of computing resources,
+   but very handy in some special cases.
+   provided from course */
 void quicksleep(int cyc) {
 
 	int i;
@@ -27,6 +27,7 @@ void quicksleep(int cyc) {
 
 /* display_send
  * sends data to display
+ * provided from course but changed name
  */
 uint8_t display_send(uint8_t data) {
 
@@ -97,14 +98,14 @@ void display_update() {
 
 	for (y = 0; y < 32 / 4; y++) {
 
-		PORTFCLR = 0x10;		// Display command mode
+		PORTFCLR = 0x10;		// Display command mode, same as DISPLAY_CHANGE_TO_COMMAND_MODE
 		display_send(0x22);		// Set page start and end address
 		display_send(y);		// Column to use.
 
 		display_send(0x00);		// Set lower nibble of column start address
 		display_send(0x10);		// Set higher part of column start address
 
-		PORTFSET = 0x10;		// Set display to data mode
+		PORTFSET = 0x10;		// Set display to data mode, same as DISPLAY_CHANGE_TO_DATA_MODE
 
 		// Load and send data for each segment
 		for (x = 0; x < 128; x++) {
@@ -151,5 +152,5 @@ void display_init(void) {
 	display_send(0xDA);
 	display_send(0x20);
 	
-	display_send(0xAF); // Turn on display by sending 1010 1111
+	display_send(0xAF);
 }

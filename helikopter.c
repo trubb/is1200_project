@@ -10,25 +10,26 @@ char limit_floor = 24;
 
 
 /*
-	
-	DID WE FLIP THESE OR WHAT?
+	Note that everything is reverse to what we think is normal
 
+	0 == first row (top)
+	24 == "bottom" row, out of 32 possible
 */
 void helicopter_placement(){
 
-	if((getbtns() & 0x04) == 4){
+	if((getbtns() & 0x04) == 4){	// if the button IS pressed
 
 		if(y != limit_roof){	// if the helicopter is not at the roof
-			y = y - gravity;	// 
+			y = y - gravity;	// send it up a little bit
 		}
 		else{
 			y = limit_roof;		// else set y to the top limit
 		}
 	}
-	else{
+	else{						// if the button is NOT pressed
 
 		if(y != limit_floor){	// if the helicopter is not at the floor
-			y = y + gravity;	
+			y = y + gravity;	// send it down towards it
 		}
 		else{
 			y = limit_floor;	// else set y to the bottom limit
