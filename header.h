@@ -40,6 +40,6 @@ void timer_wait(int duration);
 void environment_set(void);
 
 // Scoring
-int score;
+//int score;
 void score_inc(void);
 int score_get(void);

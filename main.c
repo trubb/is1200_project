@@ -4,13 +4,19 @@
 
 void labwork( void ){
 
-	display_reset();
-	timer_wait(50);
-	environment_set();
-	helicopter_placement();
-	display_update();
+	int i;
+	
+	for (i = 0; i < 99999; i++){
+	
+		display_reset();
+		timer_wait(50);
+		environment_set();
+		helicopter_placement();
+		display_update();
 
-	score_inc();
+		score_inc();
+		timer_wait(50);
+	}
 }
 
 int main(void) {
@@ -101,6 +107,6 @@ int main(void) {
 	while(1){
 		labwork(); //Do lab-specific things again and again 
 	}
-	return 0;
 
+	return 0;
 }

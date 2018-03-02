@@ -23,12 +23,12 @@ int environment[128] = {
 void environment_update(){
 
 	int i;
-	int n;
+	int n = 7;
 
 	// generates a number between 1 and 8
 	//srand(time(NULL));
 	// better random generation
-	n = rand() % 9 + 1;
+	//n = rand() % 9 + 1;
 
 	for(i = 0; i < 128 - 1; i++){
 		environment[i] = environment[i + 1];

@@ -91,7 +91,7 @@ void display_reset(){
  */
 void display_update() {
 
-	short x
+	short x;
 	short y;
 	short value;
 	short k;
