@@ -2,11 +2,11 @@
 #include <pic32mx.h>	/* Declarations of system-specific addresses etc */
 #include "header.h"		/* Prototypes and definitions */
 
-int gravity = 1;		// how far down the helicopter travels per call
-int y = 12;				// initial vertical position
+char gravity = 1;		// how far down the helicopter travels per call
+char y = 12;				// initial vertical position
 
-int limit_roof = 0;		// how far up we can go
-int limit_floor = 24;	// how far down we can go
+char limit_roof = 0;		// how far up we can go
+char limit_floor = 24;	// how far down we can go
 
 /*
 	Note that everything is reverse to what we think is normal
@@ -48,7 +48,7 @@ void helicopter_placement(int x){
  * when called draws the helicopter on the screen
  * at the given position.
  */
-void helicopter_draw(int x, int y, int helicopter_bitmap[8][8]){
+void helicopter_draw(char x, char y, char helicopter_bitmap[8][8]){
 
 	int i;
 	int j;
