@@ -32,7 +32,6 @@ void display_init(void);
 // Data
 char display_matrix[128][32];
 char helicopter_bitmap[8][8];
-int score;
 
 // Timer
 void timer_wait(int duration);
@@ -41,5 +40,6 @@ void timer_wait(int duration);
 void environment_set(void);
 
 // Scoring
+int score;
 void score_inc(void);
 int score_get(void);

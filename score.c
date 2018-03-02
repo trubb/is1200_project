@@ -8,6 +8,7 @@ static int highscore = 0;
 void score_inc(){
 
 	score++;
+	PORTE = score;	// is this possible? Shouldn't have to give it a hex value?
 }
 
 int score_get(){

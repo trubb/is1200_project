@@ -10,6 +10,7 @@ void labwork( void ){
 	helicopter_placement();
 	display_update();
 
+	score_inc();
 }
 
 int main(void) {
@@ -21,8 +22,17 @@ int main(void) {
 	/* Set up output pins */
 	AD1PCFG = 0xFFFF;
 	ODCE = 0x0;
-	TRISECLR = 0xFF;
-	PORTE = 0x0;
+	TRISECLR = 0xFF;	// set leds to be outputs ???
+	
+	PORTE = 0x0;		// set PORTE to 0
+
+	/* Set up PORTE to blink our leds for score 
+	 * we should not have to do any manual setup,
+	 * should be able to simply do PORTE++ in 
+	 * order to increment the value on the LEDs.
+
+	 * Meaning that we should be able to initialise PORTE
+	 * with e.g. 0xAC above to show that it activated*/
 
 	/* Output pins for display signals */
 	PORTF = 0xFFFF;
@@ -81,8 +91,8 @@ int main(void) {
 		helicopter_draw(i, 12, helicopter_bitmap);
 		display_update();
 
-		score_inc(&score);
-		
+		score_inc();
+
 		timer_wait(100);
 	}
 

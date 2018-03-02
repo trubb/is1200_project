@@ -8,7 +8,6 @@ char y = 12;
 char limit_roof = 0;
 char limit_floor = 24;
 
-
 /*
 	Note that everything is reverse to what we think is normal
 
