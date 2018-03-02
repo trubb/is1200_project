@@ -2,20 +2,51 @@
 #include <pic32mx.h>	/* Declarations of system-specific addresses etc */
 #include "header.h"		/* Prototypes and definitions */
 
-void labwork( void ){
+/*void labwork( void ){
 
 	int i;
-	
+
 	for (i = 0; i < 99999; i++){
 	
 		display_reset();
-		timer_wait(50);
+		timer_wait(100);
 		environment_set();
-		helicopter_placement();
+		helicopter_placement(i);
 		display_update();
 
 		score_inc();
-		timer_wait(50);
+	}
+}*/
+
+void start_run(void){
+
+	int x;
+
+	for(x = 0; x < 10; x++){
+
+		display_reset();
+		environment_set();
+		helicopter_draw(x, 12, helicopter_bitmap);
+		display_update();
+		timer_wait(100);
+	}
+}
+
+void running(void){
+
+	int x;
+
+	for(x = 10; x < 127; x++){
+
+		display_reset();
+//		environment_set();
+		environment_update();
+		helicopter_placement(x);
+		display_update();
+
+		score_inc();
+
+		timer_wait(100);
 	}
 }
 
@@ -66,46 +97,16 @@ int main(void) {
 
 	/* Initilize display */
 	display_init();
-
 	display_reset();
-	/*
-	timer_wait(1);
-	display_pixel_on(64, 16);
-	display_pixel_on(0, 0);
-	display_update();
-	timer_wait(1);
-	display_pixel_off(64, 16);
-	display_pixel_off(0, 0);
-	*/
-	/*
-	int i;
-	for(i = 0; i < 24; i++){
-		
-		display_reset();
-		helikopter_draw(i, i, helicopter_bitmap);
-		display_update();
-		quicksleep(1000000);
-	}
-	*/
 
-	int i;
+	start_run();
 
-	for(i = 0; i < 24; i++){
-
-		display_reset();
-		environment_set();		
-		helicopter_draw(i, 12, helicopter_bitmap);
-		display_update();
-
-		score_inc();
-
-		timer_wait(100);
-	}
-
-	//labinit(); // Do any lab-specific initialization
+	// wait before starting the run across the field
+	timer_wait(2000);
 
 	while(1){
-		labwork(); //Do lab-specific things again and again 
+		running();
+		//labwork(); //Do lab-specific things again and again 
 	}
 
 	return 0;

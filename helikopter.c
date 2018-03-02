@@ -14,7 +14,7 @@ char limit_floor = 24;
 	0 == first row (top)
 	24 == "bottom" row, out of 32 possible
 */
-void helicopter_placement(){
+void helicopter_placement(int x){
 
 	if((getbtns() & 0x04) == 4){	// if the button IS pressed
 
@@ -35,7 +35,7 @@ void helicopter_placement(){
 		}
 	}
 
-	helicopter_draw(24, y, helicopter_bitmap);
+	helicopter_draw(x, y, helicopter_bitmap);
 }
 
 void helicopter_draw(char x, char y, char helicopter_bitmap[8][8]){

@@ -7,11 +7,8 @@
  ******************************/
 
 // Helicopter
-void limit_y(void);
-//int helicopter_update(void);
-void helicopter_placement(void);
+void helicopter_placement(int x);
 void helicopter_draw(char x, char y, char helicopter_bitmap[8][8]);
-//void helicopter_init();
 
 // Input 
 void input_init(void);
