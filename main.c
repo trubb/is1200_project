@@ -39,7 +39,7 @@ void running(void){
 	for(x = 10; x < 127; x++){
 
 		display_reset();
-//		environment_set();
+		environment_set();
 		environment_update();
 		helicopter_placement(x);
 		display_update();
