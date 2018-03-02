@@ -37,6 +37,7 @@ void timer_wait(int duration);
 void environment_set(void);
 
 // Scoring
-//int score;
 void score_inc(void);
 int score_get(void);
+void highscore_update(void);
+int highscore_get(void);

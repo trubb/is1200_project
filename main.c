@@ -2,41 +2,33 @@
 #include <pic32mx.h>	/* Declarations of system-specific addresses etc */
 #include "header.h"		/* Prototypes and definitions */
 
-/*void labwork( void ){
-
-	int i;
-
-	for (i = 0; i < 99999; i++){
-	
-		display_reset();
-		timer_wait(100);
-		environment_set();
-		helicopter_placement(i);
-		display_update();
-
-		score_inc();
-	}
-}*/
-
+/* start_run
+ * stage the helicopter before starting the game
+ */
 void start_run(void){
 
 	int x;
 
-	for(x = 0; x < 10; x++){
+	for(x = 0; x < 8; x++){
 
 		display_reset();
 		environment_set();
 		helicopter_draw(x, 12, helicopter_bitmap);
 		display_update();
+
 		timer_wait(100);
 	}
 }
 
+/* running
+ * called to have the helicopter scoot across the screen
+ * while also awarding points to the "player"
+ */
 void running(void){
 
 	int x;
 
-	for(x = 10; x < 127; x++){
+	for(x = 8; x < 127; x++){
 
 		display_reset();
 		environment_set();
@@ -50,6 +42,9 @@ void running(void){
 	}
 }
 
+/* main
+ * does all the things
+ */
 int main(void) {
 	/* Set up peripheral bus clock */
 	/* OSCCONbits.PBDIV = 1; */
@@ -65,8 +60,8 @@ int main(void) {
 
 	/* Set up PORTE to blink our leds for score 
 	 * we should not have to do any manual setup,
-	 * should be able to simply do PORTE++ in 
-	 * order to increment the value on the LEDs.
+	 * but simply do PORTE++ in order to 
+	 * increment the value on the LEDs.
 
 	 * Meaning that we should be able to initialise PORTE
 	 * with e.g. 0xAC above to show that it activated*/
@@ -101,12 +96,12 @@ int main(void) {
 
 	start_run();
 
-	// wait before starting the run across the field
-	timer_wait(2000);
+	// wait before starting the run across the field so
+	// that the player has some time to see what is going on
+	timer_wait(1000);
 
 	while(1){
 		running();
-		//labwork(); //Do lab-specific things again and again 
 	}
 
 	return 0;

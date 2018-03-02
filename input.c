@@ -11,11 +11,17 @@ void input_init( void ){
 	TRISD |= 0xfe0; // Sätter knappar och switchar 
 }
 
+/* getsw
+ * when called returns the state of the switches at PORTD
+ */
 int getsw ( void ){
 
 	return ((PORTD & 0x0f00) >> 8);
 }
 
+/* getbtns
+ * when called returns the state of the buttons at PORTD
+ */
 int getbtns ( void ){
 
 	return ((PORTD & 0x0e0) >> 5);

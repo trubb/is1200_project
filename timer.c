@@ -36,7 +36,9 @@ void timer_init( void ){
 	T2CONSET = 0x8000;			// Start the timer
 */
 }
-
+/* timer_wait
+ * when called waits for [ms] milliseconds
+ */
 void timer_wait(int ms) {
 	
 	timer_init();
